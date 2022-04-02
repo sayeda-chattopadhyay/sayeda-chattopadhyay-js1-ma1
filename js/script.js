@@ -24,31 +24,19 @@ cat.complain();
 
 // Answer 2
 
-// Select the h3 from the HTML using the querySelector method and assign it to a variable called heading.
-
-// Change its innerHTML value to "Updated heading".
-
 const heading = document.querySelector("h3");
 
 heading.innerHTML = "Updated heading";
 
 // Answer 3
 
-// Use the style property on the heading variable from the question above to change its font size to "2em".
-
 heading.style.fontSize = "2em";
 
-// Question 4:
-
-// Add a class to the heading variable called subheading.
+// Answer 4:
 
 heading.classList.add("subheading");
 
-// Question 5:
-
-// Write code that selects all the p elements on a page and assigns them to a variable called paragraphs.
-
-// Loop through the p elements and change the colour of each to "red".
+// Answer 5:
 
 const paragraphs = document.querySelectorAll("p");
 
@@ -56,9 +44,7 @@ for (let i = 0; i < paragraphs.length; i++) {
   paragraphs[i].style.color = "red";
 }
 
-// Question 6:
-
-// Select the div with a class of results, assign it to a variable called resultsContainer and set its inner HTML to be <p>New paragraph</p> and its background colour to be yellow.
+// Answer 6:
 
 const resultsContainer = document.querySelector(".results");
 
@@ -66,26 +52,38 @@ resultsContainer.innerHTML += "<p>New paragraph</p>";
 
 resultsContainer.style.backgroundColor = "yellow";
 
-// Question 7:
+// Answer 7:
 
-// Create a function that has one parameter called list.
+function catList(list) {
+  for (let i = 0; i < list.length; i++) {
+    console.log(list[i].name);
+  }
+}
 
-// Inside the function, loop through the list parameter and console log the name property in each object.
+catList(cats);
 
-// Call the function and pass in the cats variable in the script.js file in the repo.
+// Answer 8
 
-// Question 8:
+function createCats(cats) {
+  let html = "";
 
-// Create a function called createCats. The function will have one parameter called cats.
+  for (let i = 0; i < cats.length; i++) {
+    let catAge = "Age Unknown";
 
-// Inside the function loop through the value passed in as cats and create HTML for each object in the array.
+    if (cats[i].age) {
+      catAge = cats[i].age;
+    }
 
-// Wrap each item in a div, each name property in an h5 tag and each age property in a p tag.
+    html += `<div class="cat">
+              <h5>${cats[i].name}</h5>
+              <p>Age: ${catAge}</p>
+              </div>`;
+  }
+  return html;
+}
 
-// If the age property is missing, it should display “Age unknown” instead.
+const newHtml = createCats(cats);
 
-// Return the HTML from the function.
+const catContainer = document.querySelector(".cat-container");
 
-// Call the function and pass in the cats array as the argument.
-
-// Assign the return value of the function to the innerHTML property of the element on the HTML page with a class of cat-container.
+catContainer.innerHTML = newHtml;
